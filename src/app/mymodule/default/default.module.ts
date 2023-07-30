@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { DefaultRoutingModule } from './default-routing.module';
@@ -15,7 +16,12 @@ import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 
-import { NzButtonModule } from 'ng-zorro-antd/button';
+import {  NzButtonModule } from 'ng-zorro-antd/button';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
+
 
 registerLocaleData(en);
 
@@ -27,12 +33,19 @@ registerLocaleData(en);
     KeywordsComponent,
     AlarmComponent
   ],
-  providers: [
-    { provide: NZ_I18N, useValue: en_US }
-  ],
   imports: [
     CommonModule,
-    DefaultRoutingModule
+    DefaultRoutingModule,
+    NzButtonModule,
+    NzLayoutModule,
+    NzIconModule,
+    NzMenuModule,
+    NzBreadCrumbModule
+  ],
+
+  providers: [
+    { provide: NZ_I18N, useValue: en_US }
   ]
+
 })
 export class DefaultModule { }
