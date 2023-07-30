@@ -27,7 +27,7 @@ const routes: Routes = [
       {
         path:"alarm",
         component:AlarmComponent
-      },
+      }
     ]
   }
 ];

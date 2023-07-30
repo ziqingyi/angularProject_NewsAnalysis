@@ -9,6 +9,16 @@ import { KeywordsComponent } from './keywords/keywords.component';
 import { AlarmComponent } from './alarm/alarm.component';
 
 
+//antd modules
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { en_US } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+
+import { NzButtonModule } from 'ng-zorro-antd/button';
+
+registerLocaleData(en);
+
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -16,6 +26,9 @@ import { AlarmComponent } from './alarm/alarm.component';
     ReportComponent,
     KeywordsComponent,
     AlarmComponent
+  ],
+  providers: [
+    { provide: NZ_I18N, useValue: en_US }
   ],
   imports: [
     CommonModule,
