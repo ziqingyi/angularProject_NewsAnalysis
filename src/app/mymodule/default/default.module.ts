@@ -22,6 +22,8 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 
+import { HighchartsChartModule } from 'highcharts-angular';
+
 
 registerLocaleData(en);
 
@@ -40,7 +42,8 @@ registerLocaleData(en);
     NzLayoutModule,
     NzIconModule,
     NzMenuModule,
-    NzBreadCrumbModule
+    NzBreadCrumbModule,
+    HighchartsChartModule
   ],
 
   providers: [
