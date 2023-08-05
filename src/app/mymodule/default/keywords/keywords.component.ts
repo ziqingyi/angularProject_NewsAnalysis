@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
 })
 export class KeywordsComponent {
 
+  isVisible = false;
+  isOkLoading= false;//Whether to apply loading visual effect for OK button or not
 
   listOfData = [
     {
@@ -32,4 +34,23 @@ export class KeywordsComponent {
     //Add 'implements OnInit' to the class.
     
   }
+
+   showModal(): void {
+    this.isVisible = true;
+  }
+
+  handleOk(): void {
+    this.isOkLoading = true;
+    setTimeout(() => {
+      this.isVisible = false;
+      this.isOkLoading = false;
+    }, 3000);
+  }
+
+  handleCancel(): void {
+    this.isVisible = false;
+  }
+
+
+
 }

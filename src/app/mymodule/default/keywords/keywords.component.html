@@ -1,5 +1,17 @@
 <div class="main_top">
-    <button nz-button nzType="primary">Add Key</button>
+    <button nz-button nzType="primary" (click)="showModal()">Add Key</button>
+
+
+      <nz-modal
+        [(nzVisible)]="isVisible"
+        nzTitle="Add Keywords"
+        (nzOnCancel)="handleCancel()"
+        (nzOnOk)="handleOk()"
+        [nzOkLoading]="isOkLoading"
+      >
+        <p *nzModalContent>key words here</p>
+      </nz-modal>
+
 </div>
 
 <nz-table #basicTable [nzData]="listOfData" [nzShowPagination]="false" CLASS="table_list">

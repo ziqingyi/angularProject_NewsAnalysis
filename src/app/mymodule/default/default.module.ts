@@ -32,6 +32,7 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 
+import { nzModalAnimations, NzModalModule } from 'ng-zorro-antd/modal';
 
 registerLocaleData(en);
 
@@ -55,7 +56,8 @@ registerLocaleData(en);
     NzDatePickerModule,
     FormsModule,
     NzTableModule,
-    NzDividerModule
+    NzDividerModule,
+    NzModalModule
   ],
 
   providers: [
