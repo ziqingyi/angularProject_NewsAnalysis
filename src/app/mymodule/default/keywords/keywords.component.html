@@ -1,1 +1,31 @@
-<p>keywords works!</p>
+<div class="main_top">
+    <button nz-button nzType="primary">Add Key</button>
+</div>
+
+<nz-table #basicTable [nzData]="listOfData" [nzShowPagination]="false" CLASS="table_list">
+    <thead>
+        <tr>
+            <th>Must include</th>
+            <th>May include</th>
+            <th>Not include</th>
+            <th>Frequency</th>
+            <th nzAlign="center">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of basicTable.data">
+            <td>{{ data.keyword }}</td>
+            <td>{{ data.may_include }}</td>
+            <td>{{ data.not_include }}</td>
+            <td>
+                <a>Action 一 {{ data.frequency }}</a>
+
+            </td>
+            <td nzAlign="center">
+                <a href="">modify</a>
+                <nz-divider nzType="vertical"></nz-divider>
+                <a href="">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>
