@@ -16,6 +16,9 @@ import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 
+//for [(ngModel)]
+import { FormsModule } from '@angular/forms';
+
 import {  NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
@@ -24,6 +27,7 @@ import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 
 import { HighchartsChartModule } from 'highcharts-angular';
 
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 
 registerLocaleData(en);
 
@@ -43,7 +47,9 @@ registerLocaleData(en);
     NzIconModule,
     NzMenuModule,
     NzBreadCrumbModule,
-    HighchartsChartModule
+    HighchartsChartModule,
+    NzDatePickerModule,
+    FormsModule
   ],
 
   providers: [
