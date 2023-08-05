@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NzTableQueryParams } from 'ng-zorro-antd/table';
 
 @Component({
   selector: 'app-report',
@@ -9,6 +10,12 @@ export class ReportComponent {
 
     start_date = "";
     end_date = "";
+ 
+    loading = false;
+    total = 1;
+    pageSize = 5;
+    pageIndex = 1;
+
     listOfData = [
       {
         id:1,
@@ -74,15 +81,30 @@ export class ReportComponent {
         site: "CNN",
         update_time:'2022-12-30',
         add_time:"2022-12-30",
-  
+      },
+      {
+        id:7,
+        title: 'customer satisfaction high ',
+        urL:"https://edition.cnn.com/",
+        type: 'positive',
+        keyword: 'sales',
+        site: "CNN",
+        update_time:'2022-12-30',
+        add_time:"2022-12-30",
       }
     ];
     constructor(){
-
+      //update total num of data
+      this.total = this.listOfData.length;
     }
     ngOnInit(): void {
       //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
       //Add 'implements OnInit' to the class.
       
+    }
+
+    onQueryParamsChange(params: NzTableQueryParams):void
+    {
+      console.log(params);
     }
 }
