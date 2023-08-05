@@ -29,6 +29,10 @@ import { HighchartsChartModule } from 'highcharts-angular';
 
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 
+import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
+
+
 registerLocaleData(en);
 
 @NgModule({
@@ -49,7 +53,9 @@ registerLocaleData(en);
     NzBreadCrumbModule,
     HighchartsChartModule,
     NzDatePickerModule,
-    FormsModule
+    FormsModule,
+    NzTableModule,
+    NzDividerModule
   ],
 
   providers: [

@@ -8,3 +8,32 @@
      <button nz-button nzType="primary">Search</button>
     <br />
 </div>
+
+<nz-table #basicTable [nzData]="listOfData">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Keywords</th>
+        <th>Source</th>
+        <th>Discovery Time</th>
+        <th>Post Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>{{ data.id }}</td>
+        <td>{{ data.title }}</td>
+        <td>{{ data.keyword }}</td>
+        <td>{{ data.site }}</td>
+        <td>{{ data.update_time }}</td>
+        <td>{{ data.add_time }}</td>
+        <td>
+          <a>Action 一 {{ data.id }}</a>
+          <nz-divider nzType="vertical"></nz-divider>
+
+          <a>Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
