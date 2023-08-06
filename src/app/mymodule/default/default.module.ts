@@ -33,7 +33,7 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 
 import { nzModalAnimations, NzModalModule } from 'ng-zorro-antd/modal';
-
+import { NzInputModule } from 'ng-zorro-antd/input';
 registerLocaleData(en);
 
 @NgModule({
@@ -57,7 +57,8 @@ registerLocaleData(en);
     FormsModule,
     NzTableModule,
     NzDividerModule,
-    NzModalModule
+    NzModalModule,
+    NzInputModule
   ],
 
   providers: [

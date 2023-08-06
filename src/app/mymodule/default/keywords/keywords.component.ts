@@ -10,6 +10,13 @@ export class KeywordsComponent {
   isVisible = false;
   isOkLoading= false;//Whether to apply loading visual effect for OK button or not
 
+  inputData={
+    keyword:"",
+    may_keyword:"",
+    nokeyword:"",
+    frequency:""
+  }
+  
   listOfData = [
     {
       keyword: 'cost',

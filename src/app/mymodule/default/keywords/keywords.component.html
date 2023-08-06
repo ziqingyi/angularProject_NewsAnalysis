@@ -9,7 +9,26 @@
         (nzOnOk)="handleOk()"
         [nzOkLoading]="isOkLoading"
       >
-        <p *nzModalContent>key words here</p>
+        <!-- <p *nzModalContent>key words here  </p> -->
+
+        <ul *nzModalContent class="input_list">
+            <li>
+                <span>must included: </span> <input nz-input placeholder="must included keywords" [(ngModel)]="inputData.keyword" />
+            </li>
+
+            <li>
+                <span>may include: </span><input nz-input placeholder="may included keywords" [(ngModel)]="inputData.may_keyword" />         
+            </li>
+
+            <li>
+            <span>not included:</span><input nz-input placeholder="not included keywords" [(ngModel)]="inputData.nokeyword" />         
+            </li>
+
+            <li>
+            <span>frequency: </span><input nz-input placeholder="frequency" [(ngModel)]="inputData.frequency" />         
+            </li>
+       </ul>
+  
       </nz-modal>
 
 </div>
@@ -30,7 +49,7 @@
             <td>{{ data.may_include }}</td>
             <td>{{ data.not_include }}</td>
             <td>
-                <a>Action 一 {{ data.frequency }}</a>
+                <a>{{ data.frequency }}</a>
 
             </td>
             <td nzAlign="center">
