@@ -11,6 +11,7 @@
                 </dd>
                 <dd>verification code：<input id="verify" type="text" [(ngModel)]="loginData.verify"> 
                     <span id="svgImg" (click)="getCaptcha()"></span>
+                    <!-- <span [innerHTML]="captchaData.svgImg"></span> -->
                 </dd>		
                 <dd>
                     <input type="button" class="submit" (click)="doLogin()">

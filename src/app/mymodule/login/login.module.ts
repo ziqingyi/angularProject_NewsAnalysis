@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
 
+import { HttpService } from 'src/app/service/http.service';
+
 @NgModule({
   declarations: [
     LoginComponent
@@ -13,6 +15,7 @@ import { LoginComponent } from './login.component';
     CommonModule,
     LoginRoutingModule,
     FormsModule
-  ]
+  ],
+  providers:[HttpService]
 })
 export class LoginModule { }
