@@ -1,1 +1,21 @@
-<p>login module component</p>
+<div class="container">
+    <div id="login">
+           
+            <div class="l_title">Admin Console</div>
+            <dl>
+                <dd>
+                    admin name: <input class="text" type="text" [(ngModel)]="loginData.username"/>
+                </dd>
+                 <dd>
+                    admin password: <input class="text" type="password" [(ngModel)]="loginData.password"/>
+                </dd>
+                <dd>verification code：<input id="verify" type="text" [(ngModel)]="loginData.verify"> 
+                    <span id="svgImg" (click)="getCaptcha()"></span>
+                </dd>		
+                <dd>
+                    <input type="button" class="submit" (click)="doLogin()">
+                </dd>			
+            </dl>
+            
+        </div>
+</div>

@@ -1,0 +1,81 @@
+
+.container {
+    background:#01458E;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+}
+#login {
+	width:740px;
+	height:300px;
+	background:url(../../../assets/images/loginbg.jpg) no-repeat left center;
+	/*background:#EDEFFC;*/
+	margin:120px auto 0 auto;
+}
+#login dl{
+	width:500px;
+	margin:0 0 0 auto;
+	padding:10px 0 0 20px;
+	color:#01458E;
+	float:left;
+	font-size:15px;
+}
+#login dl dd {
+	margin:16px 0;
+	height:32px;
+	line-height:32px;
+}
+#login dl dd input.text {
+	width:280px;
+	height:30px;
+    line-height:30px;
+    border: 1px solid #eee;	
+}
+
+#login dl dd input.submit {
+	background: url("../../../assets/images/login_btn.jpg") no-repeat center center;
+    border:none;
+    margin: 10px;
+	margin-left:90px;
+    padding: 2px 8px 0;
+	cursor:pointer;
+	width:123px;
+	height:29px;
+}
+#login dl dd.code {
+	padding:0 0 0 72px;
+}
+#login dl dd.code img {
+	border:1px solid #eee;
+	cursor:pointer;
+}
+#verify{	
+	height:30px;
+	line-height:30px;	  
+    width: 90px;
+    margin-right:3px;
+    border: 2px solid #eee;
+}
+#verify_img{
+	cursor:pointer;
+    position: relative;
+    top:12px;
+}
+#svgImg{
+	cursor: pointer;
+}
+.text{
+	height:22px;
+}
+.l_title{
+	height:40px;
+	line-height:40px;
+	font-size:24px;
+	padding-left:5px;
+	padding-top:10px;
+	color:#01458e;
+	font-weight:bold;
+	
+}

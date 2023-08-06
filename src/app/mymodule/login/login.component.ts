@@ -7,4 +7,31 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
+  captchaData={
+    svgImg:""   
+  }
+  loginData={
+    username:"",
+    password:"",
+    verify:"",
+    svgKey:""
+  }
+
+  constructor(){
+
+  }
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    
+  }
+
+getCaptcha(){
+
+}
+  doLogin(){
+
+  }
+
+
 }
