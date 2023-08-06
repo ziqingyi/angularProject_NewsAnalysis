@@ -1,1 +1,14 @@
-<p>alarm works!</p>
+<ul class="input_list">
+    <li class="input">
+        <span>Alarm Call: </span> <input nz-input placeholder="Alarm Call" [(ngModel)]="alarm.phone" />
+    </li>
+
+    <li class="input">
+        <span>Alarm Email: </span><input nz-input placeholder="Alarm Email" [(ngModel)]="alarm.email" />         
+    </li>
+    <li>    
+        <button nz-button nzType="primary" class="btn">
+            Save
+          </button>
+    </li>
+</ul>

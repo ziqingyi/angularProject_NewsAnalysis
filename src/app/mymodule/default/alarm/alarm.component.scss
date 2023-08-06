@@ -1,0 +1,28 @@
+ul{
+    list-style-type: none;
+}
+
+.input_list{
+    padding:0px;
+    li.input{
+        margin-bottom: 10px;
+        display: flex;
+        span{
+            width:120px;
+            display: inline-block;
+            text-align: right;
+        }
+        input{
+            flex:10px;
+        }
+    }
+    li>span{
+        margin-right: 10px;
+    }
+    .btn{
+        float:right;
+        margin-right: 10px;
+    }
+
+}
+
