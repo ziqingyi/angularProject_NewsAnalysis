@@ -6,11 +6,13 @@ import { ReportComponent } from './report/report.component';
 import { KeywordsComponent } from './keywords/keywords.component';
 import { AlarmComponent } from './alarm/alarm.component';
 
+import { loginGuard } from 'src/app/service/login.guard';
 
 const routes: Routes = [
   {
-    path:"",
+    path:"default", //must not be empty if use loginGuard
     component:DefaultComponent,
+    canActivate:[loginGuard],
     children:[
       {
         path:"home",
