@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpService } from '../../service/http.service';
 import { Router } from '@angular/router';
+import { StorageService } from 'src/app/service/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,9 @@ export class LoginComponent {
     //Add 'implements AfterContentInit' to the class.
     this.getCaptcha();
   }
-  constructor(private http: HttpService, private router:Router) {
+  constructor(private http: HttpService, 
+              private router:Router,
+              private storage:StorageService) {
 
   }
   ngOnInit(): void {
@@ -72,6 +75,9 @@ export class LoginComponent {
 
                       if(response.data.success)
                       {
+                        //save user information
+                        this.storage.set("userinfo", response.data.result);
+                        
                         //router to default module
                         this.router.navigate(['/default']);// inject angular router service
                       }
