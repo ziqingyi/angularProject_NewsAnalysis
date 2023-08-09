@@ -46,7 +46,7 @@ export class LoginComponent {
       this.captchaData.svgImg = response.data.svgImg;
       this.loginData.svgKey = response.data.svgKey;
       
-      console.log('captchaData and loginData');
+      console.log('captchaData and loginData in getCaptcha');
       console.log(this.captchaData);
       console.log(this.loginData);
 
@@ -63,7 +63,7 @@ export class LoginComponent {
   doLogin() {
     console.log('doLogin()');
 
-    console.log('captchaData and loginData');
+    console.log('captchaData and loginData in login');
     console.log(this.captchaData);
     console.log(this.loginData);
 
@@ -71,6 +71,7 @@ export class LoginComponent {
 
     this.http.post(api,this.loginData)
              .then((response:any)=>{
+                      console.log('response from login server');
                       console.log(response);
 
                       if(response.data.success)
