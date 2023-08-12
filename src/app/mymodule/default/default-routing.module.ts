@@ -10,7 +10,7 @@ import { loginGuard } from 'src/app/service/login.guard';
 
 const routes: Routes = [
   {
-    path:"default", //must not be empty if use loginGuard
+    path:"", 
     component:DefaultComponent,
     canActivate:[loginGuard],
     children:[
