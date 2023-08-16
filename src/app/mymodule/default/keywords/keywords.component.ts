@@ -16,7 +16,7 @@ export class KeywordsComponent {
   userinfo:any;
 
 
-  inputData={
+  inputAddData={
     keyword:"",
     may_keyword:"",
     nokeyword:"",
@@ -53,14 +53,31 @@ export class KeywordsComponent {
     this.isVisible = true;
   }
 
-  handleOk(): void {
+  handleAdd(): void {
+    // this.isOkLoading = true;
+    // setTimeout(() => {
+    //   this.isVisible = false;
+    //   this.isOkLoading = false;
+    // }, 3000);
     this.isOkLoading = true;
-    setTimeout(() => {
-      this.isVisible = false;
-      this.isOkLoading = false;
-    }, 3000);
-  }
+    console.log("handleAdd() inputAddData");
+    console.log(this.inputAddData);
 
+    var api = "/api/addKeywords";
+    this.http.postWithConfig(api,this.inputAddData,{
+      auth:{
+        username:this.userinfo.token,
+        password:''
+      }
+    }).then((response:any)=>{
+        this.getkeywords();
+        this.isVisible = false;
+        this.isOkLoading = false;
+    })
+
+
+  }
+  
   handleCancel(): void {
     this.isVisible = false;
   }

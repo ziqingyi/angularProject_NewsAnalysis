@@ -6,26 +6,26 @@
         [(nzVisible)]="isVisible"
         nzTitle="Add Keywords"
         (nzOnCancel)="handleCancel()"
-        (nzOnOk)="handleOk()"
+        (nzOnOk)="handleAdd()"
         [nzOkLoading]="isOkLoading"
       >
         <!-- <p *nzModalContent>key words here  </p> -->
 
         <ul *nzModalContent class="input_list">
             <li>
-                <span>must included: </span> <input nz-input placeholder="must included keywords" [(ngModel)]="inputData.keyword" />
+                <span>must included: </span> <input nz-input placeholder="must included keywords" [(ngModel)]="inputAddData.keyword" />
             </li>
 
             <li>
-                <span>may include: </span><input nz-input placeholder="may included keywords" [(ngModel)]="inputData.may_keyword" />         
+                <span>may include: </span><input nz-input placeholder="may included keywords" [(ngModel)]="inputAddData.may_keyword" />         
             </li>
 
             <li>
-            <span>not included:</span><input nz-input placeholder="not included keywords" [(ngModel)]="inputData.nokeyword" />         
+            <span>not included:</span><input nz-input placeholder="not included keywords" [(ngModel)]="inputAddData.nokeyword" />         
             </li>
 
             <li>
-            <span>frequency: </span><input nz-input placeholder="frequency" [(ngModel)]="inputData.frequency" />         
+            <span>frequency: </span><input nz-input placeholder="frequency" [(ngModel)]="inputAddData.frequency" />         
             </li>
        </ul>
   
