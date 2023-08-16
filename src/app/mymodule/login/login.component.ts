@@ -38,7 +38,7 @@ export class LoginComponent {
 
   getCaptcha() {
     console.log('getCaptcha()');
-    var api = "http://yuqing.itying.com/api/captcha";
+    var api = "/api/captcha";
     this.http.get(api).then((response: any) => {
       console.log('response:');
       console.log(response);
@@ -67,7 +67,7 @@ export class LoginComponent {
     console.log(this.captchaData);
     console.log(this.loginData);
 
-    var api="http://yuqing.itying.com/api/doLogin";
+    var api="/api/doLogin";
 
     this.http.post(api,this.loginData)
              .then((response:any)=>{

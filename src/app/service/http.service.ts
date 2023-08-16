@@ -6,17 +6,19 @@ import axios from "axios"
 })
 export class HttpService {
 
+
+  domainUrl="http://yuqing.itying.com"
+
   constructor() {
 
   }
-
 
   get(apiUrl: string) {
 
     return new Promise((resolve, reject) => {
 
       // Make a request for a user with a given ID
-      axios.get(apiUrl)
+      axios.get(this.domainUrl+apiUrl)
         .then(function (response) {
           // handle success
           // console.log(response);
@@ -32,14 +34,37 @@ export class HttpService {
         });
 
     })
-
-
-
   }
+
+
+  getWithConfig(apiUrl: string, config:any) {
+
+    return new Promise((resolve, reject) => {
+
+      // Make a request for a user with a given ID
+      axios.get(this.domainUrl+apiUrl,config)
+        .then(function (response) {
+          // handle success
+          // console.log(response);
+          resolve(response);
+        })
+        .catch(function (error) {
+          // handle error
+          // console.log(error);
+          reject(error);
+        })
+        .finally(function () {
+          // always executed
+        });
+    })
+  }
+
+
+
 
   post(apiUrl: string, params:any){
     return new Promise( (resolve, reject)=>{
-      axios.post(apiUrl,params)
+      axios.post(this.domainUrl+apiUrl,params)
            .then(function (response) {
             // handle success
             // console.log(response);
@@ -50,12 +75,24 @@ export class HttpService {
             // console.log(error);
             reject(error);
           });
-
-
-
     }  );
   }
 
 
+  postWithConfig(apiUrl: string, params:any, config:any){
+    return new Promise( (resolve, reject)=>{
+      axios.post(this.domainUrl+apiUrl,params,config)
+           .then(function (response) {
+            // handle success
+            // console.log(response);
+            resolve(response);
+          })
+           .catch(function (error) {
+            // handle error
+            // console.log(error);
+            reject(error);
+          });
+    }  );
+  }
 
 }
