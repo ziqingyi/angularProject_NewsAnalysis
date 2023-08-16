@@ -9,8 +9,10 @@ import { StorageService } from '../../../service/storage.service';
 })
 export class KeywordsComponent {
 
-  isVisible = false;
-  isOkLoading= false;//Whether to apply loading visual effect for OK button or not
+  isAddVisible = false;
+  isEditVisible = false;
+  isOkAddLoading= false;//Whether to apply loading visual effect for OK button or not
+  isOkEditLoading= false;//Whether to apply loading visual effect for OK button or not
 
 
   userinfo:any;
@@ -22,15 +24,22 @@ export class KeywordsComponent {
     nokeyword:"",
     frequency:""
   }
-  
+  inputEditData={
+    keyword:"",
+    may_keyword:"",
+    nokeyword:"",
+    frequency:""
+  }
   listOfData = [
     {
+      id:1,
       keyword: 'cost',
       may_keyword: 'profit',
       nokeyword: 'sales',
       frequency: '100'
     },
     {
+      id:2,
       keyword: 'sales',
       may_keyword: 'increase',
       nokeyword: 'decrease',
@@ -50,7 +59,7 @@ export class KeywordsComponent {
   }
 
    showModal(): void {
-    this.isVisible = true;
+    this.isAddVisible = true;
   }
 
   handleAdd(): void {
@@ -59,7 +68,7 @@ export class KeywordsComponent {
     //   this.isVisible = false;
     //   this.isOkLoading = false;
     // }, 3000);
-    this.isOkLoading = true;
+    this.isOkAddLoading = true;
     console.log("handleAdd() inputAddData");
     console.log(this.inputAddData);
 
@@ -71,15 +80,17 @@ export class KeywordsComponent {
       }
     }).then((response:any)=>{
         this.getkeywords();
-        this.isVisible = false;
-        this.isOkLoading = false;
+        this.isAddVisible = false;
+        this.isOkAddLoading = false;
     })
 
 
   }
   
+
   handleCancel(): void {
-    this.isVisible = false;
+    this.isAddVisible = false;
+    this.isEditVisible= false;
   }
 
   getkeywords(){
@@ -97,9 +108,71 @@ export class KeywordsComponent {
       }
       
     })
+  }
 
 
+  showEditModel(id:any)
+  {
+    this.isEditVisible = true;
+    console.log(id);
 
+    var api = "/api/oneKeywordsList?id="+id;
+
+    this.http.getWithConfig(api,{
+      auth:{
+        username:this.userinfo.token,
+        password:''
+      }
+    }).then((response:any)=>{
+      console.log("response from keywordsList: ");
+      console.log(response);
+     if(response.data.success == true){
+      //  this.inputEditData.keyword=response.data.result.keyword;
+      //  this.inputEditData.may_keyword=response.data.result.may_keyword;
+      //  this.inputEditData.nokeyword=response.data.result.nokeyword;
+      //  this.inputEditData.frequency=response.data.result.frequency;
+      this.inputEditData=response.data.result;
+     }
+    })
+  }
+
+  
+  handleEdit(){
+    this.isOkEditLoading = true;
+
+
+    var api = "/api/editKeywords";
+
+    this.http.postWithConfig(api,this.inputEditData,{
+      auth:{
+        username:this.userinfo.token,
+        password:''
+      }
+    }).then((response:any)=>{
+      console.log("response from handleEdit: ");
+      console.log(response);
+     if(response.data.success == true){
+      this.getkeywords();
+      this.isEditVisible = false;
+      this.isOkEditLoading = false;
+     }
+    })
+  }
+
+  deleteKeywords(id:any) 
+  {
+    var flag=confirm("confirm delete?");
+    if (flag){
+      var api = "/api/deleteKeywords?id="+id;
+      this.http.getWithConfig(api,{
+        auth:{
+          username:this.userinfo.token,
+          password:''
+        }
+      }).then((response:any)=>{
+        this.getkeywords();
+      })
+    }
   }
 
 

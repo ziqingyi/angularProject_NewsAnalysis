@@ -1,13 +1,13 @@
 <div class="main_top">
     <button nz-button nzType="primary" (click)="showModal()">Add Key</button>
 
-
+<!-- add -->
       <nz-modal
-        [(nzVisible)]="isVisible"
+        [(nzVisible)]="isAddVisible"
         nzTitle="Add Keywords"
         (nzOnCancel)="handleCancel()"
         (nzOnOk)="handleAdd()"
-        [nzOkLoading]="isOkLoading"
+        [nzOkLoading]="isOkAddLoading"
       >
         <!-- <p *nzModalContent>key words here  </p> -->
 
@@ -28,9 +28,39 @@
             <span>frequency: </span><input nz-input placeholder="frequency" [(ngModel)]="inputAddData.frequency" />         
             </li>
        </ul>
-  
       </nz-modal>
 
+      
+
+<!-- modify -->
+<nz-modal
+[(nzVisible)]="isEditVisible"
+nzTitle="Modify Keywords"
+(nzOnCancel)="handleCancel()"
+(nzOnOk)="handleEdit()"
+[nzOkLoading]="isOkEditLoading"
+>
+<!-- <p *nzModalContent>key words here  </p> -->
+
+<ul *nzModalContent class="input_list">
+    <li>
+        <span>must included: </span> <input nz-input placeholder="must included keywords" [(ngModel)]="inputEditData.keyword" />
+    </li>
+
+    <li>
+        <span>may include: </span><input nz-input placeholder="may included keywords" [(ngModel)]="inputEditData.may_keyword" />         
+    </li>
+
+    <li>
+    <span>not included:</span><input nz-input placeholder="not included keywords" [(ngModel)]="inputEditData.nokeyword" />         
+    </li>
+
+    <li>
+    <span>frequency: </span><input nz-input placeholder="frequency" [(ngModel)]="inputEditData.frequency" />         
+    </li>
+</ul>
+
+</nz-modal>
 </div>
 
 <nz-table #basicTable [nzData]="listOfData" [nzShowPagination]="false" CLASS="table_list">
@@ -53,9 +83,12 @@
 
             </td>
             <td nzAlign="center">
-                <a href="">modify</a>
+                <!-- <a href="">modify</a>
                 <nz-divider nzType="vertical"></nz-divider>
-                <a href="">Delete</a>
+                <a href="">Delete</a> -->
+                <button nz-button (click)="showEditModel(data.id)">Modify</button>
+                &nbsp;
+                <button nz-button (click)="deleteKeywords(data.id)">Delete</button>
             </td>
         </tr>
     </tbody>
