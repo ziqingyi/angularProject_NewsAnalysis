@@ -34,6 +34,8 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
 
 import { nzModalAnimations, NzModalModule } from 'ng-zorro-antd/modal';
 import { NzInputModule } from 'ng-zorro-antd/input';
+//notification
+import{NzMessageModule} from 'ng-zorro-antd/message'
 registerLocaleData(en);
 
 @NgModule({
@@ -58,7 +60,8 @@ registerLocaleData(en);
     NzTableModule,
     NzDividerModule,
     NzModalModule,
-    NzInputModule
+    NzInputModule,
+    NzMessageModule
   ],
 
   providers: [

@@ -7,7 +7,7 @@
         <span>Alarm Email: </span><input nz-input placeholder="Alarm Email" [(ngModel)]="alarm.email" />         
     </li>
     <li>    
-        <button nz-button nzType="primary" class="btn">
+        <button nz-button nzType="primary" class="btn" (click)="setAlarm()">
             Save
           </button>
     </li>
