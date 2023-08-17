@@ -12,7 +12,7 @@ const routes: Routes = [
   {
     path:"", 
     component:DefaultComponent,
-    canActivate:[loginGuard],
+    canActivate:[loginGuard],//--only check once in default
     children:[
       {
         path:"home",
@@ -20,7 +20,8 @@ const routes: Routes = [
       },
       {
         path:"report",
-        component:ReportComponent
+        component:ReportComponent,
+        canActivate:[loginGuard]// check in report component
       },
       {
         path:"keywords",
