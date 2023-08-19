@@ -1,0 +1,57 @@
+<!-- <p>report works!</p> -->
+
+<div class="main_top">
+    <nz-date-picker [(ngModel)]="start_time" nzPlaceHolder="Start Date" ></nz-date-picker>
+    -
+    <nz-date-picker [(ngModel)]="end_time" nzPlaceHolder="End Date" ></nz-date-picker>
+
+     <button nz-button nzType="primary" (click)="doSearch()">Search</button>
+    <br />
+</div>
+<!--[nzFrontPagination]="true"   true:frontend paging -->
+<nz-table #basicTable [nzData]="listOfData" 
+                      [nzLoading]="loading" 
+                      [nzTotal]="total" 
+                      [nzPageSize]="pageSize"
+                      [nzPageIndex]="pageIndex" 
+                      [nzFrontPagination]="false"
+                      (nzQueryParams)="onQueryParamsChange($event)">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Type</th>
+            <th>Keywords</th>
+            <th>Source</th>
+            <th>Discovery Time</th>
+            <th>Post Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of basicTable.data">
+            <td>{{ data.id }}</td>
+            <td>{{ data.title }}</td>
+            <td>
+                <div [ngSwitch]="data.type">
+                    <div *ngSwitchCase="1"> positive news </div>
+                    <div *ngSwitchCase="-1" class="red">negative news</div>
+                    <div *ngSwitchDefault="">UnKnown</div>
+                </div>
+            </td>
+            <td>{{ data.keywords }}</td>
+            <td class="url">
+                <a [href]="data.url" target="_blank">
+                {{ data.url }}
+                </a>
+            </td>
+            <td>{{ data.update_time*1000 | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+            <td>{{ data.add_time | formattime }}</td>
+            <td>
+                <a>Action 一 {{ data.id }}</a>
+                <nz-divider nzType="vertical"></nz-divider>
+
+                <a>Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>

@@ -7,6 +7,8 @@ import { KeywordsComponent } from './keywords/keywords.component';
 import { AlarmComponent } from './alarm/alarm.component';
 
 import { loginGuard } from 'src/app/service/login.guard';
+import { PositiveReportComponent } from './positive-report/positive-report.component';
+import { NegativeReportComponent } from './negative-report/negative-report.component';
 
 const routes: Routes = [
   {
@@ -21,6 +23,16 @@ const routes: Routes = [
       {
         path:"report",
         component:ReportComponent,
+        canActivate:[loginGuard]// check in report component
+      },
+      {
+        path:"positive-report",
+        component:PositiveReportComponent,
+        canActivate:[loginGuard]// check in report component
+      },
+      {
+        path:"negative-report",
+        component:NegativeReportComponent,
         canActivate:[loginGuard]// check in report component
       },
       {

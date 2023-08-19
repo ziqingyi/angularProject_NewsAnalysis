@@ -39,6 +39,8 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import{NzMessageModule} from 'ng-zorro-antd/message';
 
 import { FormattimePipe } from '../../pipe/formattime.pipe';
+import { PositiveReportComponent } from './positive-report/positive-report.component';
+import { NegativeReportComponent } from './negative-report/negative-report.component';
 
 registerLocaleData(en);
 
@@ -49,7 +51,9 @@ registerLocaleData(en);
     ReportComponent,
     KeywordsComponent,
     AlarmComponent,
-    FormattimePipe
+    FormattimePipe,
+    PositiveReportComponent,
+    NegativeReportComponent
   ],
   imports: [
     CommonModule,
