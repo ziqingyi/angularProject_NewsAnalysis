@@ -12,14 +12,15 @@
 <nz-table #basicTable [nzData]="listOfData" 
                       [nzLoading]="loading" 
                       [nzTotal]="total" 
-                      [nzFrontPagination]="true" 
                       [nzPageSize]="pageSize"
                       [nzPageIndex]="pageIndex" 
+                      [nzFrontPagination]="false"
                       (nzQueryParams)="onQueryParamsChange($event)">
     <thead>
         <tr>
             <th>ID</th>
             <th>Title</th>
+            <th>Type</th>
             <th>Keywords</th>
             <th>Source</th>
             <th>Discovery Time</th>
@@ -30,8 +31,13 @@
         <tr *ngFor="let data of basicTable.data">
             <td>{{ data.id }}</td>
             <td>{{ data.title }}</td>
-            <td>{{ data.keyword }}</td>
-            <td>{{ data.site }}</td>
+            <td>{{ data.type }}</td>
+            <td>{{ data.keywords }}</td>
+            <td class="url">
+                <a [href]="data.url" target="_blank">
+                {{ data.url }}
+                </a>
+            </td>
             <td>{{ data.update_time }}</td>
             <td>{{ data.add_time }}</td>
             <td>
