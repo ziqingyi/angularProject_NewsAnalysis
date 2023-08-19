@@ -19,7 +19,7 @@ export class ReportComponent {
     pageIndex = 1;//current page
 
     userinfo:any;//user information
-    listOfData = [
+    listOfData:any = [
       {
         id:1,
         title: 'profit increase',
@@ -27,8 +27,8 @@ export class ReportComponent {
         type: 1,
         keywords: 'profit',
         site: "news.com",
-        update_time:'2022-06-06',
-        add_time:"2022-06-06",
+        update_time:0 ,//'2022-06-06',
+        add_time:0 ,//"2022-06-06",
   
       },
       {
@@ -38,8 +38,8 @@ export class ReportComponent {
         type: -1,
         keywords: 'cost',
         site: "abc.com",
-        update_time:'2023-12-01',
-        add_time:"2023-12-01",
+        update_time:0 ,//'2023-12-01',
+        add_time:0 ,//"2023-12-01",
   
       }, 
       {
@@ -49,8 +49,8 @@ export class ReportComponent {
         type: 1,
         keywords: 'sales',
         site: "CNN",
-        update_time:'2022-12-30',
-        add_time:"2022-12-30",
+        update_time:0 ,//'2022-12-30',
+        add_time:0 ,//"2022-12-30",
   
       },
       {
@@ -60,8 +60,8 @@ export class ReportComponent {
         type: 1,
         keywords: 'profit',
         site: "news.com",
-        update_time:'2022-06-06',
-        add_time:"2022-06-06",
+        update_time:0 ,//'2022-06-06',
+        add_time:0 ,//"2022-06-06",
   
       },
       {
@@ -71,8 +71,8 @@ export class ReportComponent {
         type: -1,
         keywords: 'cost',
         site: "abc.com",
-        update_time:'2023-12-01',
-        add_time:"2023-12-01",
+        update_time:0 ,//'2023-12-01',
+        add_time:0 ,//"2023-12-01",
   
       }, 
       {
@@ -82,8 +82,8 @@ export class ReportComponent {
         type: 1,
         keywords: 'sales',
         site: "CNN",
-        update_time:'2022-12-30',
-        add_time:"2022-12-30",
+        update_time:0 ,//'2022-12-30',
+        add_time:0 ,//"2022-12-30",
       },
       {
         id:7,
@@ -92,8 +92,8 @@ export class ReportComponent {
         type: 1,
         keywords: 'sales',
         site: "CNN",
-        update_time:'2022-12-30',
-        add_time:"2022-12-30",
+        update_time:0 ,//'2022-12-30',
+        add_time:0 ,//"2022-12-30",
       }
     ];//report information
 
