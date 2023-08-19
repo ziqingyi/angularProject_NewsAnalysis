@@ -31,7 +31,13 @@
         <tr *ngFor="let data of basicTable.data">
             <td>{{ data.id }}</td>
             <td>{{ data.title }}</td>
-            <td>{{ data.type }}</td>
+            <td>
+                <div [ngSwitch]="data.type">
+                    <div *ngSwitchCase="1"> positive news </div>
+                    <div *ngSwitchCase="-1" class="red">negative news</div>
+                    <div *ngSwitchDefault="">UnKnown</div>
+                </div>
+            </td>
             <td>{{ data.keywords }}</td>
             <td class="url">
                 <a [href]="data.url" target="_blank">
