@@ -1,11 +1,11 @@
 <!-- <p>report works!</p> -->
 
 <div class="main_top">
-    <nz-date-picker [(ngModel)]="start_date" nzPlaceHolder="Start Date" ></nz-date-picker>
+    <nz-date-picker [(ngModel)]="start_time" nzPlaceHolder="Start Date" ></nz-date-picker>
     -
-    <nz-date-picker [(ngModel)]="end_date" nzPlaceHolder="End Date" ></nz-date-picker>
+    <nz-date-picker [(ngModel)]="end_time" nzPlaceHolder="End Date" ></nz-date-picker>
 
-     <button nz-button nzType="primary">Search</button>
+     <button nz-button nzType="primary" (click)="doSearch()">Search</button>
     <br />
 </div>
 <!--[nzFrontPagination]="true"   true:frontend paging -->

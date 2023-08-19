@@ -10,9 +10,12 @@ import { StorageService } from 'src/app/service/storage.service';
 })
 export class ReportComponent {
 
-    start_date = "";
-    end_date = "";
+    start_time = "";
+    end_time = "";
  
+    start_unix_time:number = 0;
+    end_unix_time:number = 0;
+
     loading = false;
     total = 1;
     pageSize = 5;//number of records per page
@@ -114,7 +117,7 @@ export class ReportComponent {
 
     getReportList():void{
       this.loading = true;//loading not finished
-      var api = `/api/reportList?page=${this.pageIndex}&pageSize=${this.pageSize}`;
+      var api = `/api/reportList?page=${this.pageIndex}&pageSize=${this.pageSize}&startTime=${this.start_unix_time}&endTime=${this.end_unix_time}`;
       this.http.getWithConfig(api,{
         auth:{
           username:this.userinfo.token,
@@ -142,6 +145,17 @@ export class ReportComponent {
       this.getReportList();
     }
 
+    doSearch(){
 
+      var startDate = new Date(this.start_time);
+      this.start_unix_time =Math.ceil( startDate.getTime()/1000  );
+
+      var endDate = new Date(this.end_time);
+      this.end_unix_time =Math.ceil(endDate.getTime()/1000) ;
+      console.log('doSearch()');
+      console.log(this.start_unix_time);
+      console.log(this.end_unix_time);
+      this.getReportList();
+    }
 
 }
