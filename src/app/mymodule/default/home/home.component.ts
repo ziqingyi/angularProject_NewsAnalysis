@@ -31,7 +31,7 @@ export class HomeComponent {
       enabled:false   //remove credit
     },
     title: {
-      text: 'piechart'
+      text: 'news anaylsis pie chart'
     },
     tooltip: {
       pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -77,7 +77,7 @@ export class HomeComponent {
       type: 'column'
     },
     title: {
-      text: 'column'
+      text: 'news analysis column table'
     },
     subtitle: {
       text: 'data source:xxxxx'
@@ -140,7 +140,8 @@ export class HomeComponent {
         username: this.userinfo.token,
         password: ""
       }
-    }).then((response: any) => {
+    }).then((response: any) => 
+    {
       console.log("response from getPieData: ");
       console.log(response);
 
@@ -148,36 +149,74 @@ export class HomeComponent {
       console.log(this.pieChart);
 
       if (response.data.success == true) {
-        let tempArr = [];
-        var pieData = response.data;
-        for (let i = 0; i < pieData.result.length; i++) 
-        {
-          if (i == 0) {
+          let tempArr = [];
+          var pieData = response.data;
+          for (let i = 0; i < pieData.result.length; i++) 
+          {
+            if (i == 0) {
+              tempArr.push({
+                name: pieData.result[i].title,
+                y: pieData.result[i].count,
+                slice: true,
+                selected: true
+              }
+              )
+            }
+
             tempArr.push({
               name: pieData.result[i].title,
-              y: pieData.result[i].count,
-              slice: true,
-              selected: true
-            }
-            )
+              y: pieData.result[i].count
+            })
           }
 
-          tempArr.push({
-            name: pieData.result[i].title,
-            y: pieData.result[i].count
+          // add to #pieChart
+          this.pieChart.chart.addSeries({
+            type: "pie",
+            name: "news analysis",
+            colorByPoint: true,
+            data: tempArr
           })
-        }
+      }
+      else// if (response.data.success == true)
+      {
+        console.log("update chart when response is failed: ");
 
-        // add to #pieChart
+        // add default to #pieChart
         this.pieChart.chart.addSeries({
           type: "pie",
-          name: "population",
+          name: "news analysis",
           colorByPoint: true,
-          data: tempArr
+          data: []
         })
-
+        //update pie chart
+        this.pieChart.chart.update(
+          {
+            series: [{
+              type: "pie",   //must have type
+                name: 'nes analysis',
+                colorByPoint: true,
+                data: [{
+                  name: 'option1',
+                  y: 6111111,
+                  sliced: true,
+                  selected: true
+                }, {
+                  name: 'option2',
+                  y: 8312421
+                }, {
+                  name: 'option3',
+                  y: 5312421
+                }, {
+                  name: 'option4',
+                  y: 4532421
+                },]
+              }]    
+          }
+          );
       }
-    })
+
+    });
+
   }
 
   getColumnData(){
@@ -203,8 +242,40 @@ export class HomeComponent {
               type:"column"
             })
         }
-      }  
-    })
+        //update one column data
+        this.columnChart.chart.series[0].update(
+          {
+            data:[1229.9, 71.5, 306.4, 429.2, 144.0, 176.0, 135.6, 248.5, 216.4, 194.1, 95.6, 54.4]
+          }
+        )
+      }
+     else //if (response.data.success == true) 
+     {
+          console.log("update chart when response is failed: ");
+          // add default to #columnChart
+          this.columnChart.chart.addSeries({
+                type:"column",
+                name: 'Positive',
+                data:[]
+              })
+         //update column chart              
+          this.columnChart.chart.update(
+            {
+              series: [{
+                type: "column",
+                name: 'Positive',
+                data: [439, 715, 104, 1292, 144, 176.0]
+              }, {
+                name: 'Negative',
+                type: "column",
+                data: [299, 104, 106.4, 129.2, 144.0, 176.0]
+              }]
+            }
+          );
+
+     }
+
+    });
 
   }
 
