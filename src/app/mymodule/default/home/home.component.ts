@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import * as Highcharts from 'highcharts';
+import { HttpService } from '../../../service/http.service';
+import { StorageService } from '../../../service/storage.service';
 
 
 @Component({
@@ -8,6 +10,13 @@ import * as Highcharts from 'highcharts';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+
+
+  @ViewChild("pieChart") pieChart:any;
+  @ViewChild("columnChart") columnChart:any;
+
+  userinfo:any;
+
   Highcharts: typeof Highcharts = Highcharts;
   
   chartOptions1: Highcharts.Options =  {
@@ -40,26 +49,27 @@ export class HomeComponent {
         }
       }
     },
-    series: [{
-      type:"pie",   //must have type
-      name: '人口数',
-      colorByPoint: true,
-      data: [{
-        name: 'option1',
-        y: 6111111,
-        sliced: true,
-        selected: true
-      }, {
-        name: 'option2',
-        y: 8312421
-      }, {
-        name: 'option3',
-        y: 5312421
-      }, {
-        name: 'option4',
-        y: 4532421
-      },]
-    }]
+    series:[]
+    // series: [{
+    //   type:"pie",   //must have type
+    //   name: 'population',
+    //   colorByPoint: true,
+    //   data: [{
+    //     name: 'option1',
+    //     y: 6111111,
+    //     sliced: true,
+    //     selected: true
+    //   }, {
+    //     name: 'option2',
+    //     y: 8312421
+    //   }, {
+    //     name: 'option3',
+    //     y: 5312421
+    //   }, {
+    //     name: 'option4',
+    //     y: 4532421
+    //   },]
+    // }]
   };
 
   chartOptions2: Highcharts.Options={
@@ -99,27 +109,103 @@ export class HomeComponent {
       }
     },
     // https://api.highcharts.com/highcharts/plotOptions.column
-    series: [{
-      type:"column",
-      name: 'Positive',
-      data: [439, 715, 104, 1292, 144, 176.0]
-    }, {
-      name: 'Negative',
-      type:"column",
-      data: [299, 104, 106.4, 129.2, 144.0, 176.0]
-    }]
+    series:[]
+    // series: [{
+    //   type:"column",
+    //   name: 'Positive',
+    //   data: [439, 715, 104, 1292, 144, 176.0]
+    // }, {
+    //   name: 'Negative',
+    //   type:"column",
+    //   data: [299, 104, 106.4, 129.2, 144.0, 176.0]
+    // }]
   }
 
-  constructor(){
-
+  constructor(private http:HttpService,private storage:StorageService){
+      this.userinfo = this.storage.get("userinfo");
+      console.log(this.userinfo);
   }
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
-    
+    this.getPieData();
+    this.getColumnData();
   }
 
+  getPieData() {
+    var api = "/api/areaOptions";
+    this.http.getWithConfig(api, {
+      auth: {
+        username: this.userinfo.token,
+        password: ""
+      }
+    }).then((response: any) => {
+      console.log("response from getPieData: ");
+      console.log(response);
 
+      console.log("this.pieChart object:");
+      console.log(this.pieChart);
+
+      if (response.data.success == true) {
+        let tempArr = [];
+        var pieData = response.data;
+        for (let i = 0; i < pieData.result.length; i++) 
+        {
+          if (i == 0) {
+            tempArr.push({
+              name: pieData.result[i].title,
+              y: pieData.result[i].count,
+              slice: true,
+              selected: true
+            }
+            )
+          }
+
+          tempArr.push({
+            name: pieData.result[i].title,
+            y: pieData.result[i].count
+          })
+        }
+
+        // add to #pieChart
+        this.pieChart.chart.addSeries({
+          type: "pie",
+          name: "population",
+          colorByPoint: true,
+          data: tempArr
+        })
+
+      }
+    })
+  }
+
+  getColumnData(){
+    var api = "/api/columnOptions";
+    this.http.getWithConfig(api,{
+      auth:{
+        username:this.userinfo.token,
+        password:""
+      }
+    }).then((response:any)=>{
+      console.log("response from getColumnData: ");
+      console.log(response);
+
+      if(response.data.success == true){
+
+        var columnData = response.data.result;
+
+        for (let i = 0; i <columnData.length; i++) 
+        {
+            this.columnChart.chart.addSeries({
+              name:columnData[i].title,
+              data:columnData[i].data,
+              type:"column"
+            })
+        }
+      }  
+    })
+
+  }
 
 }
